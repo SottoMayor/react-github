@@ -1,6 +1,6 @@
 import React from 'react';
 import UserCard from '../components/Home/UserCard';
-import PaginationButton from '../components/UI/PaginationButton';
+import PaginationBox from '../components/Home/PaginationBox';
 
 const USERS = [
     { id: 1, login: 'SottoMayor' },
@@ -16,10 +16,8 @@ const Home = () => {
             {USERS.map((user) => (
                 <UserCard {...user} />
             ))}
-            <section className="flex items-center justify-center">
-                <PaginationButton>1</PaginationButton>
-                <PaginationButton>2</PaginationButton>
-            </section>
+            
+            <PaginationBox previous='1' next='2'/>
         </>
     );
 };

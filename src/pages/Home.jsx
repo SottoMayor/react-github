@@ -1,6 +1,8 @@
 import React from 'react';
 import UserCard from '../components/Home/UserCard';
 import PaginationBox from '../components/Home/PaginationBox';
+import { getUsers } from '../util/api';
+import { useLoaderData } from 'react-router-dom';
 
 const USERS = [
     { id: 1, login: 'SottoMayor' },
@@ -11,15 +13,27 @@ const USERS = [
 ];
 
 const Home = () => {
+    const userData = useLoaderData()
+    const { users, next_page } = userData
+
+    const parsedUsers = JSON.parse(users)
+
     return (
         <>
-            {USERS.map((user) => (
-                <UserCard {...user} />
+            {parsedUsers.map((user) => (
+                <UserCard id={user.id} login={user.login} />
             ))}
             
             <PaginationBox previous='1' next='2'/>
         </>
     );
 };
+
+export const homeLoader = async ({request}) => {
+  const sinceQuery = request.url.split('?')[1]
+  const sinceValue = sinceQuery?.split('=')[1]
+
+  return getUsers(sinceValue)
+}
 
 export default Home;

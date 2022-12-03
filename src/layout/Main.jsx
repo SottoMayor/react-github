@@ -6,7 +6,7 @@ const Main = () => {
   return (
     <main>
         <Header/>
-        <section>
+        <section className='py-4 px-[2%] bg-primary min-h-screen text-white'>
             <Outlet/>
         </section>
     </main>

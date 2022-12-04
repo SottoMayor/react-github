@@ -21,3 +21,14 @@ export const getUser = async (username) => {
         console.log(e)
     }
 }
+
+export const getRepos = async (username) => {
+    try{
+        const response = await axios.get(`${import.meta.env.VITE_APP_API_URL}/api/users/${username}/repos`)
+
+        return response.data;
+    }catch(e){
+        // In this test I'm not worried about handling errors.
+        console.log(e)
+    }
+}

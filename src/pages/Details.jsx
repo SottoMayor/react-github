@@ -35,9 +35,9 @@ const Details = () => {
 };
 
 export const detailsLoader = async ({ params }) => {
-    const { id: userId } = params;
+    const { username } = params;
 
-    return getUser(userId);
+    return getUser(username);
 };
 
 export default Details;

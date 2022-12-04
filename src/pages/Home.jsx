@@ -17,7 +17,7 @@ const Home = () => {
     return (
         <>
             {parsedUsers.map((user) => (
-                <UserCard id={user.id} login={user.login} />
+                <UserCard key={user.id} id={user.id} login={user.login} />
             ))}
 
             <PaginationBox previous={previousPage} next={nextPage} />

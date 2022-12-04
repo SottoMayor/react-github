@@ -1,8 +1,13 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLoaderData } from 'react-router-dom';
 import Repos from '../pages/Repos';
+import { getUser } from '../util/api';
 
 const Details = () => {
+
+    const userData = useLoaderData()
+    
+
     return (
         <>
             <div>Details</div>
@@ -12,5 +17,11 @@ const Details = () => {
         </>
     );
 };
+
+export const detailsLoader = async ({params}) => {
+   const { id: userId } = params;
+
+    return getUser(userId)
+}
 
 export default Details;

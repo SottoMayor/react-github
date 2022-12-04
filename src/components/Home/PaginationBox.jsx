@@ -5,11 +5,12 @@ import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 const PaginationBox = (props) => {
     return (
         <section className="flex items-center justify-center">
-            {/* <PaginationButton
+            <PaginationButton
+                disabled
                 link={`${props.previous}`}
             >
                 <BsArrowLeft size={23} />
-            </PaginationButton> */}
+            </PaginationButton>
             <PaginationButton
                 link={`${props.next}`}
             >

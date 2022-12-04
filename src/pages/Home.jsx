@@ -13,27 +13,31 @@ const USERS = [
 ];
 
 const Home = () => {
-    const userData = useLoaderData()
-    const { users, next_page } = userData
+    const userData = useLoaderData();
+    const {
+        users,
+        previous_page: previousPage,
+        next_page: nextPage,
+    } = userData;
 
-    const parsedUsers = JSON.parse(users)
+    const parsedUsers = JSON.parse(users);
 
     return (
         <>
             {parsedUsers.map((user) => (
                 <UserCard id={user.id} login={user.login} />
             ))}
-            
-            <PaginationBox previous='1' next='2'/>
+
+            <PaginationBox previous={previousPage} next={nextPage} />
         </>
     );
 };
 
-export const homeLoader = async ({request}) => {
-  const sinceQuery = request.url.split('?')[1]
-  const sinceValue = sinceQuery?.split('=')[1]
+export const homeLoader = async ({ request }) => {
+    const sinceQuery = request.url.split('?')[1];
+    const sinceValue = sinceQuery?.split('=')[1];
 
-  return getUsers(sinceValue)
-}
+    return getUsers(sinceValue);
+};
 
 export default Home;

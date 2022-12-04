@@ -1,8 +1,7 @@
 import React from 'react';
-import { Outlet, Route, Routes, useLoaderData } from 'react-router-dom';
+import { Outlet, useLoaderData } from 'react-router-dom';
 import ShowReposController from '../components/Details/ShowReposController';
 import UserDetails from '../components/Details/UserDetails';
-import Repos, { reposLoader } from '../pages/Repos';
 import { getUser } from '../util/api';
 
 const Details = () => {

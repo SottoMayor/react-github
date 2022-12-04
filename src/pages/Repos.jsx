@@ -1,21 +1,24 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { getRepos } from '../util/api'
+import ListRepos from '../components/Repos/ListRepos';
+import { getRepos } from '../util/api';
 
 const Repos = () => {
-  const reposData = useLoaderData()
-  const parsedRepositories = JSON.parse(reposData?.repositories);
-  return (
-    <div>Repos</div>
-  )
-}
+    const reposData = useLoaderData();
+    const parsedRepositories = JSON.parse(reposData?.repositories);
+    return (
+        <div className="flex justify-center items-center">
+            <ListRepos repos={parsedRepositories} />
+        </div>
+    );
+};
 
-export const reposLoader = ({params}) => {
-  console.log(params);
+export const reposLoader = ({ params }) => {
+    console.log(params);
 
-  const { username } = params;
+    const { username } = params;
 
-  return getRepos(username);
-}
+    return getRepos(username);
+};
 
-export default Repos
+export default Repos;

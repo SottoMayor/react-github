@@ -1,10 +1,9 @@
 import React from 'react';
 import { Route, Routes, useLoaderData } from 'react-router-dom';
+import ShowReposController from '../components/Details/ShowReposController';
 import UserDetails from '../components/Details/UserDetails';
 import Repos from '../pages/Repos';
 import { getUser } from '../util/api';
-import { useState } from 'react';
-import TransitionPageButton from '../components/UI/TransitionPageButton';
 
 const USERS = [
     { identifier: 'ID', value: '66526913' },
@@ -13,32 +12,9 @@ const USERS = [
 ];
 
 const Details = () => {
-    const [showRepos, setShowRepos] = useState(false);
+    
 
     const userData = useLoaderData();
-
-    const showReposHandler = () => {
-        setShowRepos((prevState) => !prevState);
-    };
-
-    let showReposContent;
-    if (showRepos) {
-        showReposContent = (
-            <TransitionPageButton
-                text="Ocultar repositorios de SottoMayor"
-                onClick={showReposHandler}
-                path=""
-            />
-        );
-    } else {
-        showReposContent = (
-            <TransitionPageButton
-                text="Ver repositórios de SottoMayor"
-                onClick={showReposHandler}
-                path="repos"
-            />
-        );
-    }
 
     return (
         <>
@@ -47,7 +23,9 @@ const Details = () => {
                 userInfoArray={USERS}
             />
 
-            {showReposContent}
+            <div className="my-8 flex justify-center">
+                <ShowReposController user='SottoMayor'/>
+            </div>
 
             <Routes>
                 <Route path="/repos" element={<Repos />} />

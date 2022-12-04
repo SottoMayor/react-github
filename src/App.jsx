@@ -5,17 +5,23 @@ import {
     RouterProvider,
 } from 'react-router-dom';
 import Main from './layout/Main';
-import Home from './pages/Home';
+import Home, { homeLoader } from './pages/Home';
 import Details from './pages/Details';
 import NotFound from './pages/NotFound';
-import { homeLoader } from './pages/Home';
 import { detailsLoader } from './pages/Details';
+import Repos, { reposLoader } from './pages/Repos';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Main />}>
             <Route index element={<Home />} loader={homeLoader} />
-            <Route path="/details/:username/*" element={<Details />} loader={detailsLoader} />
+            <Route
+                path="/details/:username/*"
+                element={<Details />}
+                loader={detailsLoader}
+            >
+                <Route path="repos" element={<Repos />} loader={reposLoader} />
+            </Route>
             <Route path="*" element={<NotFound />} />
         </Route>
     )

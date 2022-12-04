@@ -1,7 +1,15 @@
 import React from 'react';
+import { useLoaderData, useMatches } from 'react-router-dom';
 import { getRepos } from '../util/api'
 
-const Repos = () => {
+const Repos = (props) => {
+  console.log(props)
+
+  const matches = useMatches()
+  console.log(matches)
+  const reposData = useLoaderData()
+  console.log(reposData)
+
   return (
     <div>Repos</div>
   )

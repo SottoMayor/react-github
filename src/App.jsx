@@ -10,10 +10,11 @@ import Details from './pages/Details';
 import NotFound from './pages/NotFound';
 import { detailsLoader } from './pages/Details';
 import Repos, { reposLoader } from './pages/Repos';
+import Error from './pages/Error';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<Main />}>
+        <Route path="/" element={<Main />} errorElement={<Error/>}>
             <Route index element={<Home />} loader={homeLoader} />
             <Route
                 path="/details/:username"

@@ -3,8 +3,8 @@ import { Route, Routes, useLoaderData } from 'react-router-dom';
 import UserDetails from '../components/Details/UserDetails';
 import Repos from '../pages/Repos';
 import { getUser } from '../util/api';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import TransitionPageButton from '../components/UI/TransitionPageButton';
 
 const USERS = [
     { identifier: 'ID', value: '66526913' },
@@ -18,18 +18,26 @@ const Details = () => {
     const userData = useLoaderData();
 
     const showReposHandler = () => {
-        setShowRepos(prevState => !prevState)
-    }
+        setShowRepos((prevState) => !prevState);
+    };
 
     let showReposContent;
     if (showRepos) {
         showReposContent = (
-            <Link onClick={showReposHandler} to={``}>Ocultar repositorios de SottoMayor</Link>
+            <TransitionPageButton
+                text="Ocultar repositorios de SottoMayor"
+                onClick={showReposHandler}
+                path=""
+            />
         );
-    }else{
+    } else {
         showReposContent = (
-            <Link onClick={showReposHandler} to={`repos`}>Ver repositórios de SottoMayor</Link>
-        )
+            <TransitionPageButton
+                text="Ver repositórios de SottoMayor"
+                onClick={showReposHandler}
+                path="repos"
+            />
+        );
     }
 
     return (
@@ -38,7 +46,7 @@ const Details = () => {
                 avatar="https://avatars.githubusercontent.com/u/66526913?v=4"
                 userInfoArray={USERS}
             />
-            
+
             {showReposContent}
 
             <Routes>

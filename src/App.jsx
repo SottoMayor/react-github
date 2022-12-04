@@ -16,11 +16,11 @@ const router = createBrowserRouter(
         <Route path="/" element={<Main />}>
             <Route index element={<Home />} loader={homeLoader} />
             <Route
-                path="/details/:username/*"
+                path="/details/:username"
                 element={<Details />}
                 loader={detailsLoader}
             >
-                <Route path="repos" element={<Repos />} loader={reposLoader} />
+                <Route path="repos" index element={<Repos />} loader={reposLoader}/>
             </Route>
             <Route path="*" element={<NotFound />} />
         </Route>

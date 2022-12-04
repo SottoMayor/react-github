@@ -1,15 +1,10 @@
 import React from 'react';
-import { useLoaderData, useMatches } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import { getRepos } from '../util/api'
 
-const Repos = (props) => {
-  console.log(props)
-
-  const matches = useMatches()
-  console.log(matches)
+const Repos = () => {
   const reposData = useLoaderData()
-  console.log(reposData)
-
+  const parsedRepositories = JSON.parse(reposData?.repositories);
   return (
     <div>Repos</div>
   )

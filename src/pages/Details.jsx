@@ -1,7 +1,8 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Outlet, Route, Routes, useLoaderData } from 'react-router-dom';
 import ShowReposController from '../components/Details/ShowReposController';
 import UserDetails from '../components/Details/UserDetails';
+import Repos, { reposLoader } from '../pages/Repos';
 import { getUser } from '../util/api';
 
 const Details = () => {
@@ -25,6 +26,8 @@ const Details = () => {
             <div className="my-8 flex justify-center">
                 <ShowReposController user={parsedUser.login}/>
             </div>
+
+            <Outlet/>
         </>
     );
 };

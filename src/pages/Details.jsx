@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes, useLoaderData } from 'react-router-dom';
+import KeyValueParagraph from '../components/UI/KeyValueParagraph';
 import Repos from '../pages/Repos';
 import { getUser } from '../util/api';
 
@@ -18,15 +19,9 @@ const Details = () => {
                 </figure>
 
                 <div className="flex justify-evenly items-center flex-col md:flex-row">
-                    <h1 className="text-2xl">
-                        ID: <strong>66526913</strong>
-                    </h1>
-                    <h1 className="text-2xl">
-                        User: <strong>SottoMayor</strong>
-                    </h1>
-                    <h1 className="text-2xl">
-                        Created at: <strong>2020-06-06</strong>
-                    </h1>
+                    <KeyValueParagraph identifier='ID' value='66526913'/>
+                    <KeyValueParagraph identifier='User' value='SottoMayor'/>
+                    <KeyValueParagraph identifier='Created at' value='2020-06-06'/>
                 </div>
 
                 <div className="bg-tertiary py=1 w-full h-1 rounded"></div>
